@@ -1,6 +1,6 @@
 # Speccr
 
-**Warning this does not even begin to work yet as I can't properly capture procs, waiting for [an issue](https://github.com/manastech/crystal/issues/896) to be resolved before this can move forward**
+**Warning this does not even begin to work as I can't capture blocks as I'm used to from ruby, so I need a new problem resolution strategy :)**
 
 ## Why Speccr, we already have spec?
 
@@ -9,6 +9,8 @@ I love it that crystal has spec builtin as a testing library and I like using it
 * No monkey patching
 * No globally defined methods, they are all bound on `Speccr` objects in order not to pollute any name space
 * `expect` syntax
+* `let` statements
+* random test execution order
 * Suppport for dynamic matchers (`be_empty` etc.) if that's feasible
 
 Note, I'm interested in crystal and I like the language very much, but I'm no expert so no guarantees that this will actually get done but I want to try and building a testing framework seems like fun :) But this might still take a while ;)
