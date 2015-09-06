@@ -3,16 +3,16 @@ module Speccr
     def initialize(@target)
     end
 
-    def to(@matcher)
-      if @matcher.match @target
+    def to(matcher)
+      if matcher.match @target
         success
       else
         failure
       end
     end
 
-    def not_to(@matcher)
-      if @matcher.match @target
+    def not_to(matcher)
+      if matcher.match @target
         failure
       else
         success

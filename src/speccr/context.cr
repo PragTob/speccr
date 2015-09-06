@@ -1,9 +1,11 @@
 module Speccr
   class Context
-    def initialize(@parent, @description, &blk)
-      @tests = [] of Test
-      @before = [] of Proc
-      @after = [] of Proc
+    def initialize(@parent, @description)
+      @before = [] of Proc(-> Nil)
+      @after = [] of Proc(-> Nil)
+    end
+
+    def run(&blk)
       with self yield
     end
 
@@ -12,13 +14,15 @@ module Speccr
     end
 
     def it(description, &blk)
-      @tests << Test.new self, description, blk
+      with self yield
     end
 
-    def run
-      @tests.each do |test|
-        test.run
-      end
+    def expect(object)
+      ExpectationTarget.new(object)
+    end
+
+    def eq(expected)
+      Matcher::Equality.new(expected)
     end
 
     def before(&blk)
